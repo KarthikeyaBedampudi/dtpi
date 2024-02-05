@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books Exchange</title>
+    <link rel="stylesheet" href="addbook.css">
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@600&family=Playfair+Display:wght@400;500&family=Poppins:wght@700&family=Zeyada&display=swap');
+  </style>
+  </head>
+  <body>
+    <div class="nav">
+      <img src="assets/icon.png" height="80px">
+      <p>ADD BOOK</p>
+    </div>
+    <div class="background">
+      <img src="assets/b2.png">
+      <div class="form-container">
+        <div class="form-group">
+          <label for="input1">Title:</label>
+          <input type="text" id="input1" name="input1" >
+        </div>
+        <div class="form-group">
+          <label for="input2">Author:</label>
+          <input type="text" id="input2" name="input2">
+        </div>
+        <div class="form-group">
+          <label for="input3">ISBN:</label>
+          <input type="text" id="input3" name="input3">
+        </div>
+        <div class="form-group">
+          <label for="image">Upload Book Image:</label>
+          <input type="file" id="image" name="image" accept="image/*">
+        </div>
+        <div class="form-group">
+          <label for="category">Category:</label>
+          <select id="category" name="category">
+            <option value="option1">Fiction</option>
+            <option value="option2">Non-Fiction</option>
+            <option value="option2">Education</option>
+            <option value="option3">Thriller</option>
+            <option value="option3">Bio-Graphy</option>
+            <option value="option3">Fantasy</option>
+            <option value="option3">Sci-Fi</option>
+            <option value="option3">Science</option>
+          </select>
+        </div>
+        
+        <button id="redirectButton" type="submit" onclick="validateForm()">Submit</button>
+      </div>
+    </div>
+    <script>
+     function validateForm() {
+      var input1 = document.getElementById("input1").value;
+      var email = document.getElementById("input2").value;
+      var password = document.getElementById("input3").value;
+
+      // Check if all fields are filled
+      if (input1 === '' || email === '' || password === '') {
+        alert("Please fill in all fields");
+        return;
+      }
+      window.location.href = "dashboard.html";
+    }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books Exchange</title>
+    <link rel="stylesheet" href="mail.css">
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@600&family=Playfair+Display:wght@400;500&family=Poppins:wght@700&family=Zeyada&display=swap');
+  </style>
+  </head>
+  <body>
+    <div class="nav">
+      <img src="assets/icon.png" height="80px">
+      <p>SEND YOUR E-MAIL</p>
+    </div>
+    <div class="TEXT">
+      <p>***Please Add Any Contact Information, or any messages that you want to send to the owner***</p>
+    </div>
+    <form action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="a3a59ebb-42de-4b71-a783-a29a038258ba">
+    <textarea class="user-input" name="userMessage" placeholder="Write the message the you need to send to the owner..."></textarea>
+    <div class="buttons">
+      <button id="bt" type="submit">SUBMIT</button>
+    </div>
+  </form>
+  <a href="search.html">
+    <div>
+        <button id="cancelbt">CANCEL</button>      
+    </div></a>
+  <script src="https://web3forms.com/client/script.js" async defer></script>
+    </body>
+</html>

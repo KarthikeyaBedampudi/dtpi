@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .search-container {
+      margin-left: 230px;
+      width: 70%;
+      background-color: #f2f2f2;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .list-container {
+      width: 80%;
+      margin: 20px auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+  <title>Book List</title>
+</head>
+<body>
+
+  <div class="search-container">
+    <!-- Your search bar goes here -->
+    <input type="text" name="" id="myInput" placeholder="Search..." onkeyup="searchFun()" style="width: 100%;">
+  </div>
+
+  <div class="list-container">
+    <table id="myTable">
+      <thead>
+        <tr>
+          <th>BOOK NAME</th>
+          <th>ISBN</th>
+          <th>Author</th>
+          <th>Owner</th>
+          <th>Exchange</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Static 20 rows -->
+        <tr>
+          <td>THE C LANGUAGE</td>
+          <td>4567839016532</td>
+          <td>Dennis Ritchie </td>
+          <td>Sai Kiran</td>
+          <td><button class="exchangeButton" data-id="1">Exchange</button></td>
+        </tr>
+        <!-- Add the remaining rows with proper button IDs -->
+        </tr>
+        <tr>
+          <td>THE LIGHT OF THE STORM</td>
+          <td>8950374946789</td>
+          <td>Karen Hesse</td>
+          <td>Kirti Yadav</td>
+          <td><button class="exchangeButton" data-id="2">Exchange</button></td>
+        </tr>
+        <tr>
+          <td>THE ROCKET SCIENCE</td>
+          <td>1957682360153</td>
+          <td>Alexa Hoffman</td>
+          <td>Prabhu Kiran</td>
+          <td><button class="exchangeButton" data-id="3">Exchange</button></td>
+        </tr>
+        <tr>
+          <td>DATA SCIENCE</td>
+          <td>9045629816354</td>
+          <td>Manasa Kalamalai</td>
+          <td>Karthikeya</td>
+          <td><button class="exchangeButton" data-id="4">Exchange</button></td>
+        </tr>
+        <tr>
+          <td>MACHINE LEARNING</td>
+          <td>2446204567829</td>
+          <td>Tom Mitchell</td>
+          <td>Rohan</td>
+          <td><button class="exchangeButton" data-id="5">Exchange</button></td>
+        </tr>
+        <tr>
+          <td>THE COSTAL WIND</td>
+          <td>6739812783485</td>
+          <td>Anita Shreve</td>
+          <td>Meghana</td>
+          <td><button class="exchangeButton" data-id="6">Exchange</button></td>
+        </tr>
+        <tr>
+          <td>THE HAUNTED WORLD</td>
+          <td>8717493629563</td>
+          <td>Neil Gaiman</td>
+          <td>Indu</td>
+          <td><button class="exchangeButton" data-id="7">Exchange</button></td>
+        </tr>
+        <tr>
+          <td>FAMILY OF STONE</td>
+          <td>7846342975014</td>
+          <td> Lisa Wingate</td>
+          <td>Bindu</td>
+          <td><button class="exchangeButton" data-id="8">Exchange</button></td>
+        </tr>
+        <tr>
+          <td>THE FASHIONABLE SEASON</td>
+          <td>7893471254976</td>
+          <td>Sarah Waters</td>
+          <td>Adarsh</td>
+          <td><button class="exchangeButton" data-id="9">Exchange</button></td>
+        </tr>
+        <tr>
+          <td>CHAINSAW MAN</td>
+          <td>8604629750124</td>
+          <td>Tatsuki Fujimoto</td>
+          <td>Hitesh</td>
+          <td><button class="exchangeButton" data-id="10">Exchange</button></td>
+        </tr>
+        <tr>
+          <td>SAKAMOTO DAYS</td>
+          <td>6584903726453</td>
+          <td>Yuto Suzuki</td>
+          <td>Satwik</td>
+          <td><button class="exchangeButton" data-id="11">Exchange</button></td>
+        </tr>
+        <tr>
+          <td>BONDS OF ETERNITY</td>
+          <td>2974015683920</td>
+          <td>Nora Roberts</td>
+          <td>Vinuthna</td>
+          <td><button class="exchangeButton" data-id="12">Exchange</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+
+var buttons = document.querySelectorAll('.exchangeButton');
+
+// Add a click event listener to each button
+buttons.forEach(function(button) {
+  button.addEventListener('click', function() {
+    // Get the data-id attribute value for the clicked button
+    var bookId = this.getAttribute('data-id');
+
+    // Redirect to another HTML page
+    window.location.href = 'mail.html?id=' + bookId;
+  });
+});
+
+    function searchFun() {
+      var input, filter, table, tbody, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tbody = table.getElementsByTagName("tbody")[0];
+      tr = tbody.getElementsByTagName("tr");
+
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+
+      var noResultMessage = document.getElementById("noResultMessage");
+      if (tbody.querySelectorAll("tr[style='display: none;']").length === tr.length) {
+        noResultMessage.style.display = "block";
+      } else {
+        noResultMessage.style.display = "none";
+      }
+    }
+
+    // Get the button element by its ID
+    var button = document.getElementById('redirectButton');
+
+    // Add a click event listener to the button
+    button.addEventListener('click', function() {
+      // Redirect to another HTML page
+      window.location.href = 'mail.html';
+    });
+  </script>
+</body>
+</html>

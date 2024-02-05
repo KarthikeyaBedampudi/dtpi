@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books Exchange</title>
+    <link rel="stylesheet" href="register.css">
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@600&family=Playfair+Display:wght@400;500&family=Poppins:wght@700&family=Zeyada&display=swap');
+  </style>
+  </head>
+  <body>
+    <div class="nav">
+      <img src="assets/icon.png" height="80px">
+      <p>REGISTER</p>
+    </div>
+    <div class="background">
+      <img src="assets/b2.png">
+      <div class="form-container">
+        <form id="myForm">
+        <div class="form-group">
+          <label for="input1">Full Name:</label>
+          <input type="text" id="input1" name="input1">
+        </div>
+        <div class="form-group">
+          <label for="input2">E-mail:</label>
+          <input type="text" id="input2" name="input2">
+        </div>
+        <div class="form-group">
+          <label for="input3">Password:</label>
+          <input type="password" id="input3" name="input3">
+        </div>
+        <div class="form-group">
+          <label for="input4">Confirm-password:</label>
+          <input type="password" id="input4" name="input4">
+        </div>
+          <button type="button" onclick="validateForm()">Submit</button>
+      </div>
+    </form>
+    </div>
+    <div class="login1">
+      <pre>
+      <p style="font-family: 'Poppins', sans-serif;"><b>Already Have an Account?</b></p>
+       <button id="redirectButton">Login</button>
+    </pre>
+    </div>
+  </body>
+  <script>
+      var button = document.getElementById('redirectButton');
+
+        // Add a click event listener to the button
+        button.addEventListener('click', function() {
+            // Redirect to another HTML page
+            window.location.href = 'login.html';
+        });
+    function validateForm() {
+      var input1 = document.getElementById("input1").value;
+      var email = document.getElementById("input2").value;
+      var password = document.getElementById("input3").value;
+      var confirmPassword = document.getElementById("input4").value;
+
+      // Check if all fields are filled
+      if (input1 === '' || email === '' || password === '' || confirmPassword === '') {
+        alert("Please fill in all fields");
+        return;
+      }
+
+      // Check if email is a Gmail address
+      var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+      if (!emailRegex.test(email)) {
+        alert("Please enter a Gmail address");
+        return;
+      }
+
+      // Check if password and confirm password match
+      if (password !== confirmPassword) {
+        alert("Passwords do not match");
+        return;
+      }
+      window.location.href = "login.html";
+    }
+  </script>
+</html>
